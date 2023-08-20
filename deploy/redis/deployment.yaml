@@ -1,24 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
+  name: redis-frontend-app
   labels:
-    app: redis
-  name: redis
+    app: companyapp.com
+    environment: development
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: redis
-  strategy: {}
+  replicas: 4
   template:
     metadata:
-      creationTimestamp: null
+      name: redis-pod
       labels:
-        app: redis
+        app: companyapp.com
     spec:
       containers:
-      - image: redis:alpine
-        name: redis
-        resources: {}
-status: {}
+        - name: redis
+          image: redis
